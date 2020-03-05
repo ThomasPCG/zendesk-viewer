@@ -34,8 +34,8 @@ const initialize = function () {
         data: {
             isLogin: false,
             auth: {
-                domain: 'pacificconsultinggroup.zendesk.com',
-                email: 'thomas.lim@pacificconsultinggroup.com.au',
+                domain: '',
+                email: '',
                 password: ''
             },
             organisations: []
