@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Zendesk Viewer</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.8.0/css/bulma.min.css" />
+</head>
+
+<body>
+    <div id="vuebox">
+        <section class="section">
+            <div class="container">
+                <div class="login-box" v-if="!isLogin">
+                    <div class="tile is-ancestor">
+                        <div class="tile is-parent">
+                            <div class="tile is-4"></div>
+                            <div class="tile is-child box is-4">
+                                <div class="field">
+                                    <label class="label is-small has-text-grey">Zendesk Domain <small>(e.g. <i>subdomain.zendesk.com</i>)</small></label>
+                                    <div class="control">
+                                        <input class="input is-small" type="text" v-model="auth.domain" />
+                                    </div>
+                                </div>
+                                <div class="field">
+                                    <label class="label is-small has-text-grey">Email</label>
+                                    <div class="control">
+                                        <input class="input is-small" type="text" v-model="auth.email" />
+                                    </div>
+                                </div>
+                                <div class="field">
+                                    <label class="label is-small has-text-grey">Password</label>
+                                    <div class="control">
+                                        <input class="input is-small" type="password" v-model="auth.password" @keyup.enter="login()" />
+                                    </div>
+                                </div>
+                                <div class="field is-pulled-right">
+                                    <button class="button is-link is-small has-text-white" @click="login()">Login</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div v-else>
+                    <div v-if="Array.isArray(organisations) && organisations.length > 0" class="tile is-ancestor">
+                        <div class="tile is-parent">
+                            <div class="tile is-child box is-4" v-for="organisation in organisations">
+                                <span v-html="organisation.name"></span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/notify/0.4.2/notify.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.6.11/vue.min.js"></script>
+    <script src="frontend.js"></script>
+</body>
+
+</html>
